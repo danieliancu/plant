@@ -1,0 +1,114 @@
+/* Container */
+.container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background-color: #ffffff;
+}
+
+/* Top section */
+.topSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+  color: #16a34a;
+  margin-bottom: 1rem;
+}
+
+.fileInput {
+  margin-bottom: 1rem;
+  width: 100%;
+  text-align: center;
+}
+
+.fileInput label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.button {
+  padding: 0.75rem 1.5rem;
+  background-color: #16a34a;
+  color: white !important;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+}
+
+.button:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* Bottom section */
+.bottomSection {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.leftColumn,
+.rightColumn {
+  flex: 1;
+}
+
+/* Image preview */
+.imagePreview {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.imagePreview img {
+  max-width: 100%;
+  border: 16px solid white;
+  box-shadow: 0 0 8px lightgrey;
+}
+
+/* Report description */
+.descriptionBox {
+  padding: 1.5rem;
+  background-color: #f9fafb;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+}
+
+.descriptionBox h2 {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 600;
+  background: green;
+  color: white !important;
+  padding: 5px 10px;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.descriptionBox h3 {
+  border-top: 1px solid black;
+  padding-top: 10px;
+  margin: 10px 0;
+}
+
+.descriptionBox ul {
+  padding: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .bottomSection {
+    flex-direction: column;
+  }
+}
