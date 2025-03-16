@@ -43,7 +43,10 @@ IMPORTANT: NU folosi backtick-uri în răspuns.
 
   try {
     const response = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "gpt-4", // dacă ai acces, folosește GPT-4 pentru performanțe mai bune
+      temperature: 0.2,
+      max_tokens: 2048,
+      top_p: 0.9,
       messages: [
         {
           role: "user",
@@ -54,6 +57,7 @@ IMPORTANT: NU folosi backtick-uri în răspuns.
         },
       ],
     });
+    
 
     let generatedHTML = response.choices[0].message.content || "";
     // Eliminăm eventualele delimitatori de cod
