@@ -1,5 +1,5 @@
 // pages/index.js
-import { useState } from "react";
+import { useState, useRef } from "react";
 import axios from "axios";
 import styles from "./styles/Home.module.css";
 
@@ -7,6 +7,7 @@ export default function Home() {
   const [imageBase64, setImageBase64] = useState("");
   const [generatedHTML, setGeneratedHTML] = useState("");
   const [loading, setLoading] = useState(false);
+  const fileInputRef = useRef(null);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -32,7 +33,7 @@ export default function Home() {
       const processedHTML = res.data.generatedHTML.replace(/```+/g, "");
       setGeneratedHTML(processedHTML);
     } catch (error) {
-      setGeneratedHTML("Alege altă imagine sau încearcă din nou mai târziu.");
+      setGeneratedHTML("Eroare la generarea HTML.");
       console.error(error);
     }
     setLoading(false);
@@ -42,15 +43,31 @@ export default function Home() {
     <div className={styles.container}>
       <div className={styles.topSection}>
         <h1 className={styles.title}>
-          🌱 Evaluare Sănătate Plante
+          🌱 Evaluare Plante
         </h1>
+        {/* Butonul custom pentru mobil */}
+        <button
+          className={styles.mobileFileButton}
+          onClick={() => fileInputRef.current && fileInputRef.current.click()}
+        >
+          Fotografiaza sau încarcă o imagine
+        </button>
         <div className={styles.fileInput}>
           <label>
             Încarcă imaginea plantei sau a grupului de plante pentru evaluare:
           </label>
-          <input type="file" accept="image/*" onChange={handleFileChange} />
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            ref={fileInputRef}
+          />
         </div>
-        <button className={styles.button} onClick={generateHTMLFromImage} disabled={loading}>
+        <button
+          className={styles.button}
+          onClick={generateHTMLFromImage}
+          disabled={loading}
+        >
           {loading ? "Se evaluează..." : "Evaluează starea"}
         </button>
       </div>
